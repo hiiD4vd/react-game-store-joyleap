@@ -4,9 +4,9 @@ import { AppContext } from '../context/AppContext';
 function GameRating({ rating }) {
   const generateStars = () => {
     let stars = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < rating; i++) {
       stars.push(
-        <i key={i} className={`bi bi-star-fill ${i < rating ? 'active' : ''}`}></i>
+        <i key={i} className="bi bi-star-fill"></i>
       );
     }
     return stars;
