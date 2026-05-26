@@ -23,7 +23,7 @@ function Header({ toggleActive }) {
             <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop" alt="User Image" />
           </a>
           <div className="user">
-            <span>User Name</span>
+            <span>Maheza Daud</span>
             <a href="#">View Profile</a>
           </div>
         </div>
