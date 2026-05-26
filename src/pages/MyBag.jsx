@@ -10,7 +10,6 @@ function MyBag({ active }) {
       <div className="container-fluid mt-2">
         <div className="row mb-4">
           <div className="col-lg-12 d-flex align-items-center">
-            <i className="bi bi-sliders me-3 fs-3"></i>
             <h1>My Bag</h1>
           </div>
         </div>
