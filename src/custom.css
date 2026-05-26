@@ -20,3 +20,10 @@
 .checkoutBtn:hover {
   box-shadow: -5px -5px 15px hsla(0,0%,100%,.15), 5px 5px 15px rgba(0,0,0,.35), inset -5px -5px 15px hsla(0,0%,100%,.15), inset 5px 5px 15px rgba(0,0,0,.35);
 }
+
+.gameSlider .content h2 {
+  -webkit-mask: none !important;
+  -webkit-mask-composite: source-over !important;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5) !important;
+}
