@@ -23,8 +23,8 @@ export const AppProvider = ({ children }) => {
 
   const toggleLibrary = (game) => {
     setLibrary((prev) => {
-      if (prev.find((item) => item.id === game.id)) {
-        return prev.filter((item) => item.id !== game.id);
+      if (prev.find((item) => item._id === game._id)) {
+        return prev.filter((item) => item._id !== game._id);
       } else {
         return [...prev, game];
       }
@@ -33,7 +33,7 @@ export const AppProvider = ({ children }) => {
 
   const addToBag = (game) => {
     setBag((prev) => {
-      if (!prev.find((item) => item.id === game.id)) {
+      if (!prev.find((item) => item._id === game._id)) {
         return [...prev, game];
       }
       return prev;
@@ -41,7 +41,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const removeFromBag = (gameId) => {
-    setBag((prev) => prev.filter((item) => item.id !== gameId));
+    setBag((prev) => prev.filter((item) => item._id !== gameId));
   };
 
   const toggleSidebar = () => {

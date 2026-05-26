@@ -60,7 +60,7 @@ function Categories({ games, active }) {
         </div>
         <div className="row">
           {data.map(game => (
-            <GameCard key={game.id} game={game} />
+            <GameCard key={game._id} game={game} />
           ))}
         </div>
       </div>

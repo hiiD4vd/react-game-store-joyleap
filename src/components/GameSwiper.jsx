@@ -34,17 +34,17 @@ function GameSwiper({ games }) {
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className="gameSwiper"
     >
-      {games.filter(game => game.isBanner).map(game => {
-        const isActive = activeId === game.id;
+      {games.filter(game => game.active).map(game => {
+        const isActive = activeId === game._id;
         return (
-          <SwiperSlide key={game.id}>
+          <SwiperSlide key={game._id}>
             <div className="gameSlider">
-              <img src={game.imgUrl} alt={game.title} />
+              <img src={game.img} alt={game.title} />
               <div className={`video ${isActive ? 'active' : ''}`}>
                 <iframe
                   width="1280"
                   height="720"
-                  src={game.trailerUrl}
+                  src={game.trailer}
                   title={game.title}
                   allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -52,10 +52,10 @@ function GameSwiper({ games }) {
               </div>
               <div className="content">
                 <h2>{game.title}</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio non nobis, molestiae eum quod qui.</p>
+                <p>{game.description}</p>
                 <div className="buttons">
                   <a href="#" className="orderBtn">Order Now</a>
-                  <a href="#" className={`playBtn ${isActive ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleToggleVideo(game.id); }}>
+                  <a href="#" className={`playBtn ${isActive ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleToggleVideo(game._id); }}>
                     <i className={`bi ${isActive ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
                   </a>
                 </div>
