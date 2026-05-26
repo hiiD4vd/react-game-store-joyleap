@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 function GameRating({ rating }) {
   const generateStars = () => {
@@ -19,11 +20,26 @@ function GameRating({ rating }) {
 }
 
 function GameCard({ game }) {
+  const { library, toggleLibrary, bag, addToBag } = useContext(AppContext);
+
+  const isLiked = library.find(item => item.id === game.id);
+  const isInBag = bag.find(item => item.id === game.id);
+
+  const handleLike = (e) => {
+    e.preventDefault();
+    toggleLibrary(game);
+  };
+
+  const handleBag = (e) => {
+    e.preventDefault();
+    addToBag(game);
+  };
+
   return (
     <div className="col-xl-3 col-lg-4 col-md-6">
       <div className="gameCard">
         <img src={game.imgUrl} alt={game.title} className="img-fluid" />
-        <a href="#" className="like">
+        <a href="#" className={`like ${isLiked ? 'active' : ''}`} onClick={handleLike}>
           <i className="bi bi-heart-fill"></i>
         </a>
         <div className="gameFeature">
@@ -42,7 +58,7 @@ function GameCard({ game }) {
           )}
           <span className="currentPrice">${game.price.toFixed(2)}</span>
         </div>
-        <a href="#" className="addBag">
+        <a href="#" className={`addBag ${isInBag ? 'active' : ''}`} onClick={handleBag}>
           <i className="bi bi-bag-plus-fill"></i>
         </a>
       </div>

@@ -6,10 +6,10 @@ import 'swiper/css/navigation';
 import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
 
 function GameSwiper({ games }) {
-  const [active, setActive] = useState(false);
+  const [activeId, setActiveId] = useState(null);
   
-  const handleToggleVideo = () => {
-    setActive(!active);
+  const handleToggleVideo = (id) => {
+    setActiveId(prev => prev === id ? null : id);
   };
 
   return (
@@ -34,33 +34,36 @@ function GameSwiper({ games }) {
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className="gameSwiper"
     >
-      {games.filter(game => game.isBanner).map(game => (
-        <SwiperSlide key={game.id}>
-          <div className="gameSlider">
-            <img src={game.imgUrl} alt={game.title} />
-            <div className={`video ${active ? 'active' : ''}`}>
-              <iframe
-                width="1280"
-                height="720"
-                src={game.trailerUrl}
-                title={game.title}
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="content">
-              <h2>{game.title}</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio non nobis, molestiae eum quod qui.</p>
-              <div className="buttons">
-                <a href="#" className="orderBtn">Order Now</a>
-                <a href="#" className={`playBtn ${active ? 'active' : ''}`} onClick={handleToggleVideo}>
-                  <i className={`bi ${active ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
-                </a>
+      {games.filter(game => game.isBanner).map(game => {
+        const isActive = activeId === game.id;
+        return (
+          <SwiperSlide key={game.id}>
+            <div className="gameSlider">
+              <img src={game.imgUrl} alt={game.title} />
+              <div className={`video ${isActive ? 'active' : ''}`}>
+                <iframe
+                  width="1280"
+                  height="720"
+                  src={game.trailerUrl}
+                  title={game.title}
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="content">
+                <h2>{game.title}</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio non nobis, molestiae eum quod qui.</p>
+                <div className="buttons">
+                  <a href="#" className="orderBtn">Order Now</a>
+                  <a href="#" className={`playBtn ${isActive ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleToggleVideo(game.id); }}>
+                    <i className={`bi ${isActive ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 }
