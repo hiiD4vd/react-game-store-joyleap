@@ -21,7 +21,7 @@ function Home({ games, active }) {
         </div>
         <div className="row">
           {games && games.slice(0, 4).map((game) => (
-            <GameCard key={game.id} game={game} />
+            <GameCard key={game._id} game={game} />
           ))}
         </div>
       </div>

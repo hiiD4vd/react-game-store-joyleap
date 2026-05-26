@@ -7,13 +7,25 @@ import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
 
 function GameSwiper({ games }) {
   const [activeId, setActiveId] = useState(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
   
   const handleToggleVideo = (id) => {
-    setActiveId(prev => prev === id ? null : id);
+    setActiveId(prev => {
+      const isActivating = prev !== id;
+      if (swiperInstance && swiperInstance.autoplay) {
+        if (isActivating) {
+          swiperInstance.autoplay.stop();
+        } else {
+          swiperInstance.autoplay.start();
+        }
+      }
+      return isActivating ? id : null;
+    });
   };
 
   return (
     <Swiper
+      onSwiper={setSwiperInstance}
       effect={'coverflow'}
       grabCursor={true}
       navigation={true}

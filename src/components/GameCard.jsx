@@ -6,7 +6,7 @@ function GameRating({ rating }) {
     let stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
-        <i key={i} className={`bi bi-star-fill ${i < rating ? 'active' : ''}`} style={{ color: i < rating ? 'var(--primary)' : '#555', fontSize: '10px', marginLeft: '2px' }}></i>
+        <i key={i} className={`bi bi-star-fill ${i < rating ? 'active' : ''}`}></i>
       );
     }
     return stars;

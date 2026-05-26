@@ -72,8 +72,8 @@ function MyBag({ active }) {
                 <p style={{ color: '#fff', fontSize: '1.2rem', marginBottom: 0 }} className="me-3">
                   Total: ${total.toFixed(2)}
                 </p>
-                <a href="#" className="orderBtn d-inline-flex align-items-center">
-                  Check out <i className="bi bi-credit-card-fill ms-2"></i>
+                <a href="#" className="checkoutBtn d-inline-flex align-items-center shadow-sm">
+                  Check out <i className="bi bi-wallet-fill ms-2"></i>
                 </a>
               </div>
             </div>

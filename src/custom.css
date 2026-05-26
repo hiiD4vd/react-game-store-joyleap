@@ -1,3 +1,21 @@
 .swiper-button-next svg, .swiper-button-prev svg {
   display: none !important;
 }
+
+.gameRating i.active {
+  color: var(--primary) !important;
+}
+
+.checkoutBtn {
+  background: var(--bgColor);
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 10px 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.checkoutBtn:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
