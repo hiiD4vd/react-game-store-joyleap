@@ -25,7 +25,7 @@ function Main() {
       <div className={`banner ${active ? 'active' : ''}`}>
         <Header toggleActive={handleToggleActive} />
         <div className="container-fluid">
-          <Home games={gamesData} active={activeSection === 'home'} />
+          <Home games={gamesData} active={activeSection === 'home'} onViewMore={() => handleSectionActive('categories')} />
           <Categories games={gamesData} active={activeSection === 'categories'} />
           <MyLibrary games={gamesData} active={activeSection === 'library'} />
           <MyBag games={gamesData} active={activeSection === 'bag'} />

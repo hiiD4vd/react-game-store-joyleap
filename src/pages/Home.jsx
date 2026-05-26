@@ -2,7 +2,7 @@ import React from 'react';
 import GameCard from '../components/GameCard';
 import GameSwiper from '../components/GameSwiper';
 
-function Home({ games, active }) {
+function Home({ games, active, onViewMore }) {
   return (
     <section id="home" className={`home ${active ? 'active' : ''}`}>
       <div className="container-fluid">
@@ -14,7 +14,7 @@ function Home({ games, active }) {
             <h2 className="sectionTitle">Games on promotion</h2>
           </div>
           <div className="col-lg-6 d-flex justify-content-end align-items-center">
-            <a href="#" className="viewMore">
+            <a href="#" className="viewMore" onClick={(e) => { e.preventDefault(); onViewMore(); }}>
               View More Games <i className="bi bi-arrow-right"></i>
             </a>
           </div>
