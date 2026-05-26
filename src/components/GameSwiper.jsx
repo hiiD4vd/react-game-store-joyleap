@@ -34,7 +34,7 @@ function GameSwiper({ games }) {
       modules={[EffectCoverflow, Navigation, Autoplay]}
       className="gameSwiper"
     >
-      {games.filter(game => game.active).map(game => {
+      {games.slice(0, 6).map(game => {
         const isActive = activeId === game._id;
         return (
           <SwiperSlide key={game._id}>
