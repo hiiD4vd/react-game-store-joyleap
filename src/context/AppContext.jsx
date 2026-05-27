@@ -7,8 +7,6 @@ export const AppProvider = ({ children }) => {
   const [bag, setBag] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  // Load from localStorage if needed (optional)
   useEffect(() => {
     const savedLibrary = JSON.parse(localStorage.getItem('library')) || [];
     const savedBag = JSON.parse(localStorage.getItem('bag')) || [];
